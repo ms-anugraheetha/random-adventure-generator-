@@ -1,0 +1,223 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* --- background (light) --- */
+.page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.8), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(255, 223, 186, 0.6), transparent 45%),
+    linear-gradient(135deg, #fef6e4, #f3d2c1);
+
+  transition: background 0.6s ease;
+}
+
+/* --- background (dark) --- */
+.page.dark {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(120, 160, 255, 0.15), transparent 40%),
+    radial-gradient(circle at 80% 30%, rgba(80, 120, 200, 0.12), transparent 45%),
+    linear-gradient(135deg, #0f172a, #020617);
+}
+
+/* --- abstract glow shapes --- */
+.page::before,
+.page::after {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.page::before {
+  background: #fde68a;
+  top: -100px;
+  left: -100px;
+}
+
+.page::after {
+  background: #fbcfe8;
+  bottom: -120px;
+  right: -120px;
+}
+
+.page.dark::before {
+  background: #1e3a8a;
+}
+
+.page.dark::after {
+  background: #312e81;
+}
+
+/* --- card --- */
+.card {
+  position: relative;
+  z-index: 1;
+  background: white;
+  padding: 2.5rem;
+  border-radius: 22px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.page.dark .card {
+  background: #1f2933;
+  color: #f9fafb;
+}
+
+/* --- header --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin: 1rem 0 1.2rem;
+  text-align: center;
+}
+
+.page.dark .subtitle {
+  color: #d1d5db;
+}
+
+/* --- moods --- */
+.moods {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.moods button {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.moods button.active {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.moods button:hover {
+  opacity: 0.9;
+}
+
+/* --- categories --- */
+.categories {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.categories button {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+
+.categories button.active {
+  background: #f582ae;
+  color: white;
+}
+
+.page.dark .categories button {
+  background: #374151;
+  color: #e5e7eb;
+}
+
+.page.dark .categories button.active {
+  background: #f582ae;
+  box-shadow: 0 0 0 2px rgba(251, 113, 133, 0.6);
+}
+
+/* --- main button --- */
+.main-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #f582ae;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  box-shadow: 0 12px 30px rgba(245, 130, 174, 0.4);
+}
+
+/* --- result --- */
+.result {
+  margin-top: 1.8rem;
+  padding: 1.2rem;
+  background: #fef6e4;
+  border-radius: 14px;
+  text-align: center;
+}
+
+.page.dark .result {
+  background: #374151;
+}
+
+/* --- dark toggle --- */
+.dark-toggle {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* --- animations --- */
+.animate-in {
+  animation: slideUp 0.6s ease;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
